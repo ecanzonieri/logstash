@@ -54,7 +54,7 @@ start() {
   ulimit -n ${LS_OPEN_FILES}
 
   # Run the program!
-  nice -n ${LS_NICE} chroot --userspec $LS_USER:$LS_GROUP / sh -c "
+  nice -n ${LS_NICE} setuidgid $LS_USER sh -c "
     cd $LS_HOME
     ulimit -n ${LS_OPEN_FILES}
     exec \"$program\" $args
